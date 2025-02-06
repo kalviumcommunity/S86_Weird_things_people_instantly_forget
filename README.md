@@ -30,3 +30,7 @@ I chose this project because it combines fun and creativity while allowing me to
  It offers the opportunity to work on interactive features using JavaScript (such as dynamically adding items to the list), 
  and improving user interface design with HTML. The project is valuable because it enhances my understanding of client-side technologies and
   helps me develop an engaging user experience.
+
+MILESTONE 2:
+- Initialize npm project using npm init .
+- Add a .gitignore file to exclude node_modules/ and package-lock.json/ and then added the  `.gitignore`file  and pushed the branch
