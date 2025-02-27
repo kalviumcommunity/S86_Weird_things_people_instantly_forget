@@ -31,6 +31,21 @@ I chose this project because it combines fun and creativity while allowing me to
  and improving user interface design with HTML. The project is valuable because it enhances my understanding of client-side technologies and
   helps me develop an engaging user experience.
 
-MILESTONE 2:
+## MILESTONE 2:
 - Initialize npm project using npm init .
 - Add a .gitignore file to exclude node_modules/ and package-lock.json/ and then added the  `.gitignore`file  and pushed the branch
+
+## Setting up Endpoint using express application
+The server is created using the express package.
+A basic route /ping is defined which sends back a response
+The server listens on port 3000, and when you visit http://localhost:3000/ping, you'll receive the response message.
+
+## ASAP Project Deployment on Render
+Logged into Render.com and log in using your kalvium.community Google account
+Created a Web Service via Public Repository to import files
+Deployed ASAP App Project
+
+## Deployed LINK:
+https://s86-weird-things-people-instantly-forget.onrender.com
+
+
