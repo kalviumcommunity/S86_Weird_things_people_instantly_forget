@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI, )
     console.error("Failed to connect to MongoDB:", err);
   });
 
+  
 // Define a simple /ping route
 app.get("/ping", (req, res) => {
   res.json({ message: "Pong! Server is running." });
