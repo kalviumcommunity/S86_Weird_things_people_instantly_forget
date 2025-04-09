@@ -57,4 +57,17 @@ Added MongoDB Connection via .env file to store securely
 Intialized My ASAP Project to MongoDB Database with express
 To Maintain Upcoming Tasks like authentication, Data Storing, etc.
 
+## Modifying data through api
+- Implemented full CRUD API using Express and MongoDB — includes Create, Read, Update, and Delete routes for managing "forgotten items."
+- Organized routes in a separate routes.js file and connected them to the main server.js, ensuring modular and clean backend architecture.
+- Tested all endpoints using Bruno and added request files in the docs.bruno folder for easy API testing and documentation.
+
+## Setting up react 
+- Initialized React app using Vite in the client folder for frontend structure.
+- Created a simple landing page describing the ASAP project idea.
+
+## frontend deployment link:
+https://weirdthings.netlify.app/
+
+
 
