@@ -1,0 +1,102 @@
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+  color: hsl(267, 75%, 31%);
+  min-height: 100vh;
+}
+
+.home {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(106, 27, 154, 0.2);
+  padding: 20px;
+  padding: 8rem;
+  margin: 4rem auto;
+  max-width: 800px;
+  max-width: 100vh;
+  text-align: center;
+}
+
+h1 {
+  color: #28285b;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #724ca8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* div {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(106, 27, 154, 0.2);
+  padding: 3rem;
+  margin: 4rem auto;
+  max-width: 800px;
+} */
+
+button {
+  height: 40px;
+  width: 170px;
+  margin-top: 100px;
+  border-radius: 20px;
+  background-color: rgb(240, 197, 237);
+}
+
+.forgotten-things-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.forgotten-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-left: 6px solid #7e57c2;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(123, 31, 162, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.forgotten-card:hover {
+  transform: translateY(-5px);
+}
+
+.forgotten-card h3 {
+  color: #512da8;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.forgotten-card p {
+  color: #6a1b9a;
+  margin-bottom: 0.75rem;
+}
+
+.view-button {
+  background-color: #f3e5f5;
+  color: #4a148c;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #e1bee7;
+}
+
