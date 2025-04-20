@@ -10,3 +10,4 @@ function ForgottenThingCard({ title, category }) {
 }
 
 export default ForgottenThingCard;
+

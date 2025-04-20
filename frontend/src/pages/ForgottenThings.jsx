@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ForgottenThingCard from './ForgottenThingCard';
+import ForgottenThingCard from '../components/ForgottenThingCard';
 
 function ForgottenThings() {
   const navigate = useNavigate();
