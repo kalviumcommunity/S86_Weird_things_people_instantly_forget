@@ -1,9 +1,21 @@
-const Item = require("../../models/item");
+const Item = require("../models/item");
 
 // CREATE
 exports.createItem = async (req, res) => {
   try {
-    const newItem = await Item.create(req.body);
+    const { title, category, isRemembered } = req.body;
+
+    // Basic validation
+    if (!title || !category) {
+      return res.status(400).json({ error: "Title and category are required" });
+    }
+
+    const newItem = await Item.create({
+      title,
+      category,
+      isRemembered: isRemembered || false,
+    });
+
     res.status(201).json(newItem);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -34,9 +46,14 @@ exports.getItemById = async (req, res) => {
 // UPDATE
 exports.updateItem = async (req, res) => {
   try {
-    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const { title, category, isRemembered } = req.body;
+
+    const updatedItem = await Item.findByIdAndUpdate(
+      req.params.id,
+      { title, category, isRemembered },
+      { new: true, runValidators: true }
+    );
+
     if (!updatedItem) return res.status(404).json({ error: "Item not found" });
     res.json(updatedItem);
   } catch (err) {
