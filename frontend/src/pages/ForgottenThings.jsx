@@ -39,6 +39,10 @@ function ForgottenThings() {
         </div>
       )}
 
+      <button className="add-button" onClick={() => navigate('/add-forgotten')}>
+        ➕ Add Forgotten Thing
+      </button>
+        <br />
       <button className="back-button" onClick={() => navigate('/')}>
         🔙 Back to Home
       </button>

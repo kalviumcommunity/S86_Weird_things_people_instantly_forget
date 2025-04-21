@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import ForgottenThings from './pages/ForgottenThings';
+import AddForgottenThing from './pages/AddForgottenThing';
 
 function Home() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/forgotten" element={<ForgottenThings />} />
+        <Route path="/add-forgotten" element={<AddForgottenThing />} />
       </Routes>
     </Router>
   );
