@@ -11,3 +11,4 @@ function ForgottenThingCard({ title, category, isRemembered }) {
 }
 
 export default ForgottenThingCard;
+
