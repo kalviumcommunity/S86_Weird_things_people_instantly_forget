@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import ForgottenThingCard from '../components/ForgottenThingCard';
 
 function ForgottenThings() {
   const navigate = useNavigate();
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const dummyItems = [
-    { id: 1, title: "Why they walked into a room", category: "Tasks" },
-    { id: 2, title: "Where they left their keys", category: "Objects" },
-    { id: 3, title: "Passwords they just changed", category: "Facts" },
-    { id: 4, title: "That one thing they were supposed to get at the store", category: "Tasks" },
-  ];
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/items')
+      .then(res => {
+        setItems(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching items:", err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="home">
       <h1>🧠 Forgotten Things</h1>
-      <div className="forgotten-things-container">
-        {dummyItems.map((item) => (
-          <ForgottenThingCard
-            key={item.id}
-            title={item.title}
-            category={item.category}
-          />
-        ))}
-      </div>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="forgotten-things-container">
+          {items.map((item) => (
+            <ForgottenThingCard
+              key={item._id}
+              title={item.title}
+              category={item.category}
+              isRemembered={item.isRemembered}
+            />
+          ))}
+        </div>
+      )}
 
       <button className="back-button" onClick={() => navigate('/')}>
         🔙 Back to Home
