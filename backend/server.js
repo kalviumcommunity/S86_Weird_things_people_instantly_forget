@@ -1,22 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
-// Initialize dotenv to load environment variables from a .env file
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware to parse incoming JSON requests
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+// Middleware to parse incoming JSON
 app.use(express.json());
 
+// Route Setup
 const itemRoutes = require("./routes");
 app.use("/api", itemRoutes);
 
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, )
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB is connected");
   })
@@ -24,13 +29,12 @@ mongoose.connect(process.env.MONGO_URI, )
     console.error("Failed to connect to MongoDB:", err);
   });
 
-  
-// Define a simple /ping route
+// Health Check Route
 app.get("/ping", (req, res) => {
   res.json({ message: "Pong! Server is running." });
 });
 
-// Start the server
+// Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
