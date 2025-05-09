@@ -176,3 +176,56 @@ input[type="checkbox"] {
 
 .btn-submit:hover {
   background-color: rgb(227, 173, 223);}
+
+/* Buttons inside each forgotten card */
+.card-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.edit-button {
+  background-color: #d1c4e9;
+  color: #4a148c;
+  border-radius: 20px;
+  width: 150px;
+}
+
+.edit-button:hover {
+  background-color: #b39ddb;
+}
+
+.delete-button {
+  background-color: #f8bbd0;
+  color: #880e4f;
+  border-radius: 20px;
+  width: 100px;
+}
+
+.delete-button:hover {
+  background-color: #f48fb1;
+}
+
+.save-button {
+  background-color: #c5e1a5;
+  color: #33691e;
+}
+
+.save-button:hover {
+  background-color: #aed581;
+}
+
+.cancel-button {
+  background-color: #ffe082;
+  color: #ff6f00;
+}
+
+.cancel-button:hover {
+  background-color: #ffd54f;
+}
+
