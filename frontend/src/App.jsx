@@ -4,6 +4,7 @@ import ForgottenThings from './pages/ForgottenThings';
 import AddForgottenThing from './pages/AddForgottenThing';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import UserEntityFilter from './components/UserEntityFilter.jsx';
 
 function Home() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgotten" element={<ForgottenThings />} />
         <Route path="/add-forgotten" element={<AddForgottenThing />} />
+        <Route path="/sqltest" element={<UserEntityFilter/>} />
       </Routes>
     </Router>
   );

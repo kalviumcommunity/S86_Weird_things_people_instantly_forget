@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const entityRoutes = require('./routes/sqlEntities');
+const { authenticateDatabase } = require('./sqlConfig/mysql');
+
+require('./models/sqlAssociations');
 
 dotenv.config();
 
@@ -14,6 +18,10 @@ app.use(cors({
   credentials: true
 }));
 
+// SQL Connection
+authenticateDatabase();
+
+
 // Middleware to parse incoming JSON
 app.use(express.json());
 
@@ -23,6 +31,8 @@ const itemRoutes = require("./routes/routes");
 const userRoutes = require('./routes/userRoutes');
 app.use("/api", itemRoutes);
 app.use("/users", userRoutes);
+
+app.use("/sql", entityRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
