@@ -44,19 +44,37 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "1d" });
 
-    return res.status(200).json({ 
-      msg: "Login successful", 
-      token, 
+    // Set email cookie (HTTP Only, 1-day expiry)
+    res.cookie("username", user.username, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      secure: process.env.NODE_ENV === "production", // secure flag in production
+      sameSite: "lax",
+    });
+
+    return res.status(200).json({
+      msg: "Login successful",
+      token,
       user: {
         _id: user._id,
         username: user.username,
-        email: user.email
-      } 
+        email: user.email,
+      },
     });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ msg: "Server error", error: error.message });
   }
+});
+
+// 🚀 Logout
+router.post("/logout", (req, res) => {
+  res.clearCookie("username", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+  });
+  res.status(200).json({ msg: "Logged out and cookie cleared" });
 });
 
 // 🚀 Get All Users

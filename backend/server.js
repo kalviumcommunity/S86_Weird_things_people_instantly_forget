@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 const entityRoutes = require('./routes/sqlEntities');
 const { authenticateDatabase } = require('./sqlConfig/mysql');
 
@@ -24,6 +25,7 @@ authenticateDatabase();
 
 // Middleware to parse incoming JSON
 app.use(express.json());
+app.use(cookieParser());
 
 // Route Setup
 app.use(bodyParser.json()); 

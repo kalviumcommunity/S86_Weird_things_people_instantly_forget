@@ -16,11 +16,13 @@ function ForgottenThings() {
     category: '',
     isRemembered: false,
   });
+  const [username, setUsername] = useState('');
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchUsers();
+    fetchUsername();
   }, []);
 
   useEffect(() => {
@@ -33,6 +35,21 @@ function ForgottenThings() {
       setUsers(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       setError('Error fetching users: ' + err.message);
+    }
+  };
+
+  const fetchUsername = async () => {
+    try {
+      const cookies = document.cookie.split(';');
+      const usernameCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith('username=')
+      );
+      if (usernameCookie) {
+        const value = usernameCookie.split('=')[1];
+        setUsername(decodeURIComponent(value));
+      }
+    } catch (err) {
+      console.error('Error reading username cookie:', err);
     }
   };
 
@@ -59,9 +76,9 @@ function ForgottenThings() {
         setError('Please log in to delete items.');
         return;
       }
-      
+
       await axios.delete(`http://localhost:5000/api/items/${itemId}`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess('Item deleted successfully.');
       setError('');
@@ -108,9 +125,9 @@ function ForgottenThings() {
       }
 
       await axios.put(
-        `http://localhost:5000/api/items/${editingItem._id}`, 
+        `http://localhost:5000/api/items/${editingItem._id}`,
         formData,
-        { headers: { Authorization: `Bearer ${token}` }}
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setSuccess('Item updated successfully.');
       setError('');
@@ -127,9 +144,47 @@ function ForgottenThings() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:5000/users/logout', {}, { withCredentials: true });
+    } catch (err) {
+      console.error('Logout error:', err.message);
+    }
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <div className="home">
-      <h1>🧠 Forgotten Things</h1>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <h1>🧠 Forgotten Things</h1>
+        <div>
+          {username && (
+            <span style={{ marginRight: '10px', fontWeight: 'bold' }}>
+              Welcome, {username} 👋
+            </span>
+          )}
+          <button
+            onClick={handleLogout}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: '#dc3545',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            🚪 Logout
+          </button>
+        </div>
+      </div>
+
       {error && <p style={{ color: 'crimson' }}>{error}</p>}
       {success && <p style={{ color: 'green' }}>{success}</p>}
 
