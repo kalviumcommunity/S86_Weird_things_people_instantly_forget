@@ -52,6 +52,13 @@ router.post("/login", async (req, res) => {
       sameSite: "lax",
     });
 
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      secure: process.env.NODE_ENV === "production", // secure flag in production
+      sameSite: "lax",
+    });
+
     return res.status(200).json({
       msg: "Login successful",
       token,
@@ -74,8 +81,18 @@ router.post("/logout", (req, res) => {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
   });
+
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+  });
   res.status(200).json({ msg: "Logged out and cookie cleared" });
 });
+
+
+
+
 
 // 🚀 Get All Users
 router.get("/userlist", async (_req, res) => {
