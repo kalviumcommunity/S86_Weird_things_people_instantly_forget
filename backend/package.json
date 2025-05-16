@@ -2,16 +2,26 @@
   "name": "s86_weird_things_people_instantly_forget",
   "version": "1.0.0",
   "description": "This project is an interactive, fun website designed to highlight the weird and quirky things that people often forget in daily life. \r The website will allow users to explore a collection of forgotten items, tasks, and moments, providing both entertainment and engagement",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "Sonali",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.7",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^4.21.2",
-    "mongoose": "^8.12.1"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7"
   }
 }
